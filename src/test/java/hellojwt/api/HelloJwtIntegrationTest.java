@@ -16,7 +16,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class HelloJwtIntegrationTest extends TestKitSupport {
 
-  // tag::bearer-token-claims-test[]
   @Test
   public void shouldReturnIssuerAndSubject() throws JsonProcessingException {
 
@@ -48,5 +47,4 @@ public class HelloJwtIntegrationTest extends TestKitSupport {
     // no validation is done for integration tests, thus no signature required
     return header + "." + payload; // <4>
   }
-  // end::bearer-token-claims-test[]
 }
