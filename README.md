@@ -1,6 +1,5 @@
 # endpoint-jwt
 
-
 ## Designing
 
 To understand the Akka concepts behind this example, see [Development Process](https://doc.akka.io/concepts/development-process.html) in the documentation.
