@@ -8,9 +8,6 @@ import akka.javasdk.annotations.http.Get;
 import akka.javasdk.http.AbstractHttpEndpoint;
 
 
-import java.util.concurrent.CompletionStage;
-import static java.util.concurrent.CompletableFuture.completedStage;
-
 // Opened up for access from the public internet to make the sample service easy to try out.
 // For actual services meant for production this must be carefully considered, and often set more limited
 @Acl(allow = @Acl.Matcher(principal = Acl.Principal.INTERNET))
@@ -19,18 +16,18 @@ import static java.util.concurrent.CompletableFuture.completedStage;
 public class HelloJwtEndpoint extends AbstractHttpEndpoint {
 
   @Get("/")
-  public CompletionStage<String> hello() {
-    return completedStage("Hello, World!");
+  public String hello() {
+    return "Hello, World!";
   }
 
 
   @JWT(validate = JWT.JwtMethodMode.BEARER_TOKEN, bearerTokenIssuers = {"my-issuer", "my-issuer2"}, staticClaims = @JWT.StaticClaim(claim = "sub", values = "my-subject"))
   @Get("/claims")
-  public CompletionStage<String> helloClaims() {
+  public String helloClaims() {
     var claims = requestContext().getJwtClaims(); // <1>
     var issuer = claims.issuer().get(); // <2>
     var sub = claims.subject().get(); // <2>
-    return completedStage("issuer: " + issuer + ", subject: " + sub);
+    return "issuer: " + issuer + ", subject: " + sub;
   }
 
 }
