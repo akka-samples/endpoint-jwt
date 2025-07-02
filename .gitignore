@@ -4,7 +4,10 @@
 .settings/
 
 # Intellij
-.idea/
+.idea
+!.idea/
+.idea/*
+!.idea/runConfigurations/Run_locally.xml
 *.iml
 *.iws
 
@@ -21,3 +24,5 @@ effective-pom.xml
 
 #local db
 db.mv.db
+
+akka-context/
